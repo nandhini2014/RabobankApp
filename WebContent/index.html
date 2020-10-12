@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html ng-app="customerApp">
+
+
+<head>
+<meta charset="UTF-8">
+<title>Customer Details</title>
+<h1><center>Customer Records</center></h1>
+</head>
+<body>
+<div  ng-controller="customerCtrl">
+	<div>
+	    <input type="file" ngf-select="SelectFile($file)" accept=".csv" required/>
+	    <input type="button" value="Upload" ng-click="Upload()" />
+	</div>
+    <div>
+    	<input type="text" placeholder="Search By Issue Count" ng-model="search.issueCnt"/>
+    </div>
+    <table id="tblCustomers" ng-show="IsVisible">
+        <tr>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Issue Count</th>
+            <th>Date Of Birth</th>
+        </tr>
+        <tbody ng-repeat="m in Customers | filter : search">
+            <tr>
+                <td>{{m.firstName}}</td>
+                <td>{{m.surName}}</td>
+                <td>{{m.issueCnt}}</td>
+                <td>{{m.dob}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+
+</body>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.5/angular.min.js"></script>
+<script src="js/controller.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/danialfarid-angular-file-upload/12.2.13/ng-file-upload.min.js"></script>
+<link rel="stylesheet" href="css/style.css">
+</html>
